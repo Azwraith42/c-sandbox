@@ -6,75 +6,92 @@
 using std::cout;
 using std::endl;
 using std::exception;
-using std::holds_alternative;
 using std::get;
+using std::holds_alternative;
 
+using hello_world::ErrorType;
+using hello_world::greet;
 using hello_world::Result;
 
-namespace test_hello_world {
+namespace test_hello_world
+{
 
-class TestRunner {
-public:
-    static int run_all_tests() {
-        int failures = 0;
-        
-        failures += run_test("should_greet_valid_name", test_should_greet_valid_name);
-        failures += run_test("should_return_error_for_empty_name", test_should_return_error_for_empty_name);
-        failures += run_test("should_return_error_for_whitespace_only_name", test_should_return_error_for_whitespace_only_name);
-        failures += run_test("should_greet_name_with_spaces", test_should_greet_name_with_spaces);
-        
-        if (failures == 0) {
-            cout << "All tests passed!" << endl;
-        } else {
-            cout << failures << " test(s) failed." << endl;
+    class TestRunner
+    {
+    public:
+        static int run_all_tests()
+        {
+            int failures = 0;
+
+            failures += run_test("should_greet_valid_name", test_should_greet_valid_name);
+            failures += run_test("should_return_error_for_empty_name", test_should_return_error_for_empty_name);
+            failures += run_test("should_return_error_for_whitespace_only_name", test_should_return_error_for_whitespace_only_name);
+            failures += run_test("should_greet_name_with_spaces", test_should_greet_name_with_spaces);
+
+            if (failures == 0)
+            {
+                cout << "All tests passed!" << endl;
+            }
+            else
+            {
+                cout << failures << " test(s) failed." << endl;
+            }
+
+            return failures;
         }
-        
-        return failures;
-    }
 
-private:
-    static int run_test(const string& test_name, void (*test_func)()) {
-        try {
-            test_func();
-            cout << "✓ " << test_name << endl;
-            return 0;
-        } catch (const exception& e) {
-            cout << "✗ " << test_name << " - " << e.what() << endl;
-            return 1;
+    private:
+        static int run_test(const string &test_name, void (*test_func)())
+        {
+            try
+            {
+                test_func();
+                cout << "✓ " << test_name << endl;
+                return 0;
+            }
+            catch (const exception &e)
+            {
+                cout << "✗ " << test_name << " - " << e.what() << endl;
+                return 1;
+            }
         }
-    }
 
-    static void test_should_greet_valid_name() {
-        Result result = hello_world::greet("World");
-        
-        assert(holds_alternative<string>(result));
-        assert(get<string>(result) == "Hello, World!");
-    }
+        static void test_should_greet_valid_name()
+        {
+            Result result = greet("World");
 
-    static void test_should_return_error_for_empty_name() {
-        Result result = hello_world::greet("");
-        
-        assert(holds_alternative<hello_world::ErrorType>(result));
-        assert(get<hello_world::ErrorType>(result) == hello_world::ErrorType::EMPTY_NAME);
-    }
+            assert(holds_alternative<string>(result));
+            assert(get<string>(result) == "Hello, World!");
+        }
 
-    static void test_should_return_error_for_whitespace_only_name() {
-        Result result = hello_world::greet("   ");
-        
-        assert(holds_alternative<hello_world::ErrorType>(result));
-        assert(get<hello_world::ErrorType>(result) == hello_world::ErrorType::INVALID_NAME);
-    }
+        static void test_should_return_error_for_empty_name()
+        {
+            Result result = greet("");
 
-    static void test_should_greet_name_with_spaces() {
-        Result result = hello_world::greet("John Doe");
-        
-        assert(holds_alternative<string>(result));
-        assert(get<string>(result) == "Hello, John Doe!");
-    }
-};
+            assert(holds_alternative<ErrorType>(result));
+            assert(get<ErrorType>(result) == ErrorType::EMPTY_NAME);
+        }
+
+        static void test_should_return_error_for_whitespace_only_name()
+        {
+            Result result = greet("   ");
+
+            assert(holds_alternative<ErrorType>(result));
+            assert(get<ErrorType>(result) == ErrorType::INVALID_NAME);
+        }
+
+        static void test_should_greet_name_with_spaces()
+        {
+            Result result = greet("John Doe");
+
+            assert(holds_alternative<string>(result));
+            assert(get<string>(result) == "Hello, John Doe!");
+        }
+    };
 
 }
 
-int main() {
+int main()
+{
     return test_hello_world::TestRunner::run_all_tests();
 }
