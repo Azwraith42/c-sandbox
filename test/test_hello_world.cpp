@@ -9,6 +9,8 @@ using std::exception;
 using std::holds_alternative;
 using std::get;
 
+using hello_world::Result;
+
 namespace test_hello_world {
 
 class TestRunner {
@@ -43,28 +45,28 @@ private:
     }
 
     static void test_should_greet_valid_name() {
-        hello_world::Result result = hello_world::greet("World");
+        Result result = hello_world::greet("World");
         
         assert(holds_alternative<string>(result));
         assert(get<string>(result) == "Hello, World!");
     }
 
     static void test_should_return_error_for_empty_name() {
-        hello_world::Result result = hello_world::greet("");
+        Result result = hello_world::greet("");
         
         assert(holds_alternative<hello_world::ErrorType>(result));
         assert(get<hello_world::ErrorType>(result) == hello_world::ErrorType::EMPTY_NAME);
     }
 
     static void test_should_return_error_for_whitespace_only_name() {
-        hello_world::Result result = hello_world::greet("   ");
+        Result result = hello_world::greet("   ");
         
         assert(holds_alternative<hello_world::ErrorType>(result));
         assert(get<hello_world::ErrorType>(result) == hello_world::ErrorType::INVALID_NAME);
     }
 
     static void test_should_greet_name_with_spaces() {
-        hello_world::Result result = hello_world::greet("John Doe");
+        Result result = hello_world::greet("John Doe");
         
         assert(holds_alternative<string>(result));
         assert(get<string>(result) == "Hello, John Doe!");
