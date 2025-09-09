@@ -3,6 +3,9 @@
 #include <string>
 #include <variant>
 
+using std::string;
+using std::variant;
+
 namespace hello_world {
 
 enum class ErrorType {
@@ -10,8 +13,8 @@ enum class ErrorType {
     EMPTY_NAME
 };
 
-using Result = std::variant<std::string, ErrorType>;
+using Result = variant<string, ErrorType>;
 
-Result greet(const std::string& name);
+Result greet(const string& name);
 
 }

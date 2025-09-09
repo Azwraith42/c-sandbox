@@ -65,6 +65,8 @@ IndentWidth: 4
 ColumnLimit: 100
 ```
 
+**Note**: Current project uses selective `using` declarations (e.g., `using std::string;`) instead of `std::` prefixes for cleaner syntax while avoiding namespace pollution.
+
 ## CI/CD Integration
 
 ### GitLab CI Example:

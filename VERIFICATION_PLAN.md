@@ -19,6 +19,8 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic -g build/test_test_hello_world.o build/h
 All tests passed!
 ```
 
+**Note**: Tests now use explicit types (`hello_world::Result result`) and selective `using` declarations for cleaner syntax without namespace pollution.
+
 **What I'd Do if Tests Pass**: 
 - Proceed to step 2 (build main application)
 - Confirm TDD setup is working correctly

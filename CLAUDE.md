@@ -24,10 +24,14 @@ make help
 ### Code Style
 - Use C++17 standard
 - Favor composition over inheritance
-- Use functional error handling with `std::variant<T, ErrorType>`
+- Use functional error handling with `variant<T, ErrorType>`
 - Keep functions small and focused
 - Use structured enums for error types, not string literals
 - Dependency injection for testability
+- **Prefer explicit types over `auto`** - helps with learning and catching type assumptions
+- **Use selective `using` declarations** instead of `std::` prefixes for readability
+  - Example: `using std::string; using std::variant;` at top of files
+  - Avoid `using namespace std` (namespace pollution)
 
 ### Testing Standards
 - All tests must be self-contained and deterministic
@@ -38,7 +42,7 @@ make help
 - Test naming: `should_do_x_when_y` pattern
 
 ### Error Handling
-- Use `std::variant<SuccessType, ErrorType>` pattern
+- Use `variant<SuccessType, ErrorType>` pattern
 - Structured enums for error categories
 - Clear, actionable error messages
 - No exceptions for expected error cases
