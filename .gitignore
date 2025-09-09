@@ -1,0 +1,133 @@
+# C++ Compiled Object Files
+*.o
+*.obj
+
+# C++ Compiled Dynamic Libraries
+*.so
+*.dylib
+*.dll
+
+# C++ Compiled Static Libraries
+*.a
+*.lib
+
+# C++ Executables
+*.exe
+*.out
+*.app
+
+# Build Directories
+build/
+bin/
+obj/
+out/
+debug/
+release/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+# Qt
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+*.qmlc
+*.jsc
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.vcxproj.user
+*.vcxproj.filters
+*.vcxproj
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+
+# Eclipse CDT
+.metadata
+.project
+.cproject
+.settings/
+
+# CLion / IntelliJ
+.idea/
+cmake-build-*/
+
+# Code::Blocks
+*.cbp
+*.layout
+*.depend
+
+# Dev-C++
+*.dev
+
+# CodeLite
+*.workspace
+*.session
+
+# Conan
+conanbuildinfo.*
+conaninfo.txt
+conandata.yml
+
+# vcpkg
+vcpkg_installed/
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary Files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Core Dumps
+core
+*.core
+
+# Profiling
+*.gmon
+*.prof
+
+# Test Results
+test_results/
+*.xml
+*.junit
+
+# Logs
+*.log
+
+# Package Files
+*.tar.gz
+*.zip
+*.7z
